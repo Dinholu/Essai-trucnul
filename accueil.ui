@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>445</width>
+    <height>297</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,18 +26,45 @@
     <string>ACCUEIL</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="morpionButton">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>220</y>
-     <width>80</width>
-     <height>24</height>
+     <x>150</x>
+     <y>100</y>
+     <width>82</width>
+     <height>120</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Morpion</string>
-   </property>
+   <layout class="QVBoxLayout" name="menuLayout">
+    <item>
+     <widget class="QPushButton" name="morpionButton">
+      <property name="text">
+       <string>Morpion</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="puissance4Button">
+      <property name="text">
+       <string>Puissance4</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="othelloButton">
+      <property name="text">
+       <string>Othello</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="damesButton">
+      <property name="text">
+       <string>Dames</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

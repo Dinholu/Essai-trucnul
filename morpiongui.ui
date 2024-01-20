@@ -16,14 +16,14 @@
   <widget class="QPushButton" name="retourAccueil">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>520</y>
-     <width>80</width>
-     <height>24</height>
+     <x>400</x>
+     <y>550</y>
+     <width>91</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Retour accueil</string>
+    <string>RETOUR</string>
    </property>
   </widget>
   <widget class="QLabel" name="titreMorpion">
@@ -42,14 +42,14 @@
   <widget class="QPushButton" name="JouerButton">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>480</y>
-     <width>80</width>
-     <height>24</height>
+     <x>400</x>
+     <y>500</y>
+     <width>91</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Jouer</string>
+    <string>JOUER</string>
    </property>
   </widget>
  </widget>

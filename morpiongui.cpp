@@ -43,7 +43,7 @@ void morpionGUI::ReinitialiserJeu()
 void morpionGUI::on_JouerButton_clicked(){
 
     joueur1 = JoueurFactory::CreerJoueurHumain("prenomJoueur1", Jeton::X, *input);
-    joueur2 = JoueurFactory::CreerJoueurHumain("prenomJoueur2", Jeton::O, *input);
+    joueur2 = JoueurFactory::CreerJoueurOrdinateur(Jeton::O);
 
     std::unique_ptr<IJeu> jeu = JeuFactory::CreerJeu(typeDeJeu, joueur1, joueur2, affichage);
     jeu->Jouer();
