@@ -39,6 +39,19 @@
     <string>MORPION</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="JouerButton">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>480</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Jouer</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

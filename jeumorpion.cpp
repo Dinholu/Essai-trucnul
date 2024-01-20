@@ -8,10 +8,10 @@ JeuMorpion::JeuMorpion(std::shared_ptr<AGrille> grille, std::shared_ptr<AJoueur>
 void JeuMorpion::Jouer()
 {
      modeAffichage->AfficherGrille(grille);
-
-   // while (!PartieFinie())
-   //  {
-         Tour();
+    int i = 0;
+    while ( i < 5)
+     {
+    //     Tour();
    //      if (AGagne())
    //      {
    //          AfficherResultat();
@@ -20,9 +20,10 @@ void JeuMorpion::Jouer()
 
    //      joueurCourant->getJeton() == joueur1->getJeton() ? joueurCourant = joueur2 : joueurCourant = joueur1;
 
-   //      modeAffichage->AfficherGrille(grille);
-   //  }
-    // modeAffichage->AfficherMessage("Match nul !");
+         modeAffichage->AfficherGrille(grille);
+     i++;
+     }
+     modeAffichage->AfficherMessage("Match nul !");
 }
 
 void JeuMorpion::Tour()
@@ -32,9 +33,9 @@ void JeuMorpion::Tour()
     bool coupValide = false;
     std::pair<int, int> coup;
 
-    while (!coupValide)
-    {
-        //modeAffichage->AfficherMessage("Tour de " + joueurCourant->getInformations());
+ //   while (!coupValide)
+  //  {
+       // modeAffichage->AfficherMessage("Tour de " + joueurCourant->getInformations());
         coup = joueurCourant->ChoisirCoupMorpion(coupsPossibles);
         if (std::find(coupsPossibles.begin(), coupsPossibles.end(), coup) != coupsPossibles.end())
         {
@@ -45,7 +46,7 @@ void JeuMorpion::Tour()
         {
             //modeAffichage->AfficherErreur("Coups Impossible");
         }
-    }
+//    }
 }
 std::vector<std::pair<int, int>> JeuMorpion::CoupsPossibles()
 {

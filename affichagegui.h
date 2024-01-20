@@ -18,10 +18,13 @@ public:
     virtual void AfficherErreur(const std::string& erreur) const override;
     virtual void AfficherCoupsPossibles(const std::vector<std::pair<int, int>>& coups) const override;
 
+signals:
+    void celluleBoutonClick(int x, int y);
+
 private:
     QWidget *parentWidget;  // Référence à votre widget parent (ex. morpionGUI)
 public slots:
-    void celluleBoutonClick(int x, int y);
+    //void celluleBoutonClick(int x, int y);
 };
 
 

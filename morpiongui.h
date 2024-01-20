@@ -8,6 +8,7 @@
 #include "affichagegui.h"
 #include "TypesJeu.h"
 #include "IAffichage.h"
+#include "inputgui.h"
 
 namespace Ui {
 class morpionGUI;
@@ -22,6 +23,7 @@ public:
     ~morpionGUI();
 public slots:
     void on_retourAccueil_clicked();
+    void on_JouerButton_clicked();
 
 private:
     Ui::morpionGUI *ui;
@@ -29,6 +31,7 @@ private:
     std::shared_ptr<AJoueur> joueur1;
     std::shared_ptr<AJoueur> joueur2;
     AffichageGUI* affichage;
+    InputGUI* input;
 
 signals:
     void showAccueil();
