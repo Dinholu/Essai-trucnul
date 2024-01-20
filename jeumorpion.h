@@ -6,7 +6,7 @@
 #include "AGrille.h"
 #include "AJoueur.h"
 #include "IAffichage.h"
-#include "AffichageGUI.h"
+#include "affichagegui.h"
 
 
 class JeuMorpion : public IJeu {

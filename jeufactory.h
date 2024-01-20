@@ -4,7 +4,7 @@
 #include "IJeu.h"
 #include "TypesJeu.h"
 #include "AJoueur.h"
-#include "AffichageGUI.h"
+#include "affichagegui.h"
 #include "IAffichage.h"
 #include <memory>
 

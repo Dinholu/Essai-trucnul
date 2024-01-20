@@ -7,36 +7,47 @@
 
 AffichageGUI::AffichageGUI(QWidget *parentWidget) : parentWidget(parentWidget) {}
 
-void AffichageGUI::AfficherGrille(const std::shared_ptr<AGrille> &grille)
+void AffichageGUI::AfficherGrille(const std::shared_ptr<AGrille>& grille)
 {
-    QGridLayout *gridLayout = new QGridLayout(parentWidget);
+    QGridLayout* gridLayout = new QGridLayout(parentWidget);
+    gridLayout->setSpacing(0);
+    gridLayout->setContentsMargins(-1, -1, -1, -1); // Set negative margins
+
     grilleJeu = grille;
     parentWidget->setLayout(gridLayout);
-    boutonsGrille.resize(grille->getNbLignes()); // Initialiser la taille de la première dimension
+
+    boutonsGrille.resize(grille->getNbLignes());
     for (int x = 0; x < grille->getNbLignes(); ++x)
     {
-        boutonsGrille[x].resize(grille->getNbColonnes()); // Initialiser la taille de chaque QVector interne
+        boutonsGrille[x].resize(grille->getNbColonnes());
         for (int y = 0; y < grille->getNbColonnes(); ++y)
         {
-            QPushButton *button = new QPushButton(parentWidget);
-            button->setFixedSize(50, 50); // Taille du bouton
+            QPushButton* button = new QPushButton(parentWidget);
+            button->setFixedSize(60, 60);
 
             Jeton jeton = grille->GetCellule(x, y);
-            if (jeton == Jeton::Vide)
-            {
-                button->setText("");
-            }
-            else
-            {
-                button->setText(jeton == Jeton::X ? "X" : "O"); // À adapter selon vos jetons
-            }
+            button->setText(QString(static_cast<char>(jeton)));
+
+            button->setStyleSheet("background-color: lightGray; border: 1px solid black; color: black; font-weight: bold;");
+
+            QFont font = button->font();
+            font.setPointSize(16);
+
+            button->setFont(font);
+
+            button->setToolTip(QString("Cell (%1, %2)").arg(x + 1).arg(y + 1));
+
             gridLayout->addWidget(button, x, y);
-            boutonsGrille[x][y] = button; // Stocke la référence du bouton
-            QAction::connect(button, &QPushButton::clicked, [this, x, y](){
-                emit celluleBoutonClick(x, y); });
+            boutonsGrille[x][y] = button;
+
+            connect(button, &QPushButton::clicked, [this, x, y](){
+                emit celluleBoutonClick(x, y);
+            });
         }
     }
 }
+
+
 
 void AffichageGUI::MettreAJourGrille(const std::shared_ptr<AGrille>& grille)
 {
@@ -45,26 +56,17 @@ void AffichageGUI::MettreAJourGrille(const std::shared_ptr<AGrille>& grille)
         for (int y = 0; y < grille->getNbColonnes(); ++y)
         {
             Jeton jeton = grille->GetCellule(x, y);
-            if (jeton == Jeton::Vide)
-            {
-                boutonsGrille[x][y]->setText("");
-            }
-            else
-            {
-                boutonsGrille[x][y]->setText(jeton == Jeton::X ? "X" : "O"); // À adapter selon vos jetons
-            }
+            boutonsGrille[x][y]->setText(QString(static_cast<char>(jeton)));
         }
     }
 }
 void AffichageGUI::AfficherMessage(const std::string& message, const int duree) const {
-    // Affiche un message à l'utilisateur pour une durée spécifiée
     QMessageBox::information(parentWidget, "Message", QString::fromStdString(message));
 }
 
 void AffichageGUI::AfficherErreur(const std::string &erreur) const
 {
-    // Affiche un message d'erreur
-    QMessageBox::critical(parentWidget, "Erreur", QString::fromStdString(erreur));
+    QMessageBox::critical(parentWidget, "Erreur", QString::fromStdString("Saisie invalide. Veuillez réessayer. " + erreur));
 }
 
 void AffichageGUI::AfficherCoupsPossibles(const std::vector<std::pair<int, int>> &coups) const

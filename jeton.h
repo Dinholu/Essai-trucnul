@@ -4,7 +4,7 @@
 enum class Jeton {
     X = 'X',
     O = 'O',
-    Vide = '-'
+    Vide = ' '
 };
 
 #endif // JETON_H
