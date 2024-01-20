@@ -10,22 +10,24 @@ AffichageGUI::AffichageGUI(QWidget *parentWidget) : parentWidget(parentWidget) {
 void AffichageGUI::AfficherGrille(const std::shared_ptr<AGrille>& grille)
 {
     QGridLayout *gridLayout = new QGridLayout(parentWidget);
+    gridLayout->setAlignment(Qt::AlignCenter);
     grilleJeu = grille;
     parentWidget->setLayout(gridLayout);
-    boutonsGrille.resize(grille->getNbLignes()); // Initialiser la taille de la première dimension
+    boutonsGrille.resize(grille->getNbLignes());
+
     for (int x = 0; x < grille->getNbLignes(); ++x)
     {
-        boutonsGrille[x].resize(grille->getNbColonnes()); // Initialiser la taille de chaque QVector interne
+        boutonsGrille[x].resize(grille->getNbColonnes());
         for (int y = 0; y < grille->getNbColonnes(); ++y)
         {
             QPushButton *button = new QPushButton(parentWidget);
-            button->setFixedSize(50, 50); // Taille du bouton
+            button->setFixedSize(50, 50);
 
             Jeton jeton = grille->GetCellule(x, y);
             button->setText(QString(static_cast<char>(jeton)));
 
             gridLayout->addWidget(button, x, y);
-            boutonsGrille[x][y] = button; // Stocke la référence du bouton
+            boutonsGrille[x][y] = button;
             QAction::connect(button, &QPushButton::clicked, [this, x, y](){
                 emit celluleBoutonClick(x, y); });
         }
