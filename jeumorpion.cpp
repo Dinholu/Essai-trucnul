@@ -8,20 +8,19 @@ JeuMorpion::JeuMorpion(std::shared_ptr<AGrille> grille, std::shared_ptr<AJoueur>
 void JeuMorpion::Jouer()
 {
      modeAffichage->AfficherGrille(grille);
-    int i = 0;
-    while ( i < 5)
+
+    while (!PartieFinie())
      {
-    //     Tour();
-   //      if (AGagne())
-   //      {
-   //          AfficherResultat();
-   //          return;
-   //      }
+         Tour();
+         if (AGagne())
+         {
+             AfficherResultat();
+             return;
+         }
 
-   //      joueurCourant->getJeton() == joueur1->getJeton() ? joueurCourant = joueur2 : joueurCourant = joueur1;
+         joueurCourant->getJeton() == joueur1->getJeton() ? joueurCourant = joueur2 : joueurCourant = joueur1;
 
-         modeAffichage->AfficherGrille(grille);
-     i++;
+      //   modeAffichage->AfficherGrille(grille);
      }
      modeAffichage->AfficherMessage("Match nul !");
 }
@@ -29,24 +28,24 @@ void JeuMorpion::Jouer()
 void JeuMorpion::Tour()
 {
     auto coupsPossibles = CoupsPossibles();
-
     bool coupValide = false;
     std::pair<int, int> coup;
 
- //   while (!coupValide)
-  //  {
-       // modeAffichage->AfficherMessage("Tour de " + joueurCourant->getInformations());
+    while (!coupValide)
+   {
+        modeAffichage->AfficherMessage("Tour de " + joueurCourant->getInformations());
         coup = joueurCourant->ChoisirCoupMorpion(coupsPossibles);
         if (std::find(coupsPossibles.begin(), coupsPossibles.end(), coup) != coupsPossibles.end())
         {
             grille->ChangeCellule(coup.first, coup.second, joueurCourant->getJeton());
+            modeAffichage->MettreAJourGrille(grille);
             coupValide = true;
         }
         else
         {
-            //modeAffichage->AfficherErreur("Coups Impossible");
+          //  modeAffichage->AfficherErreur("Coups Impossible");
         }
-//    }
+    }
 }
 std::vector<std::pair<int, int>> JeuMorpion::CoupsPossibles()
 {
@@ -67,7 +66,7 @@ std::vector<std::pair<int, int>> JeuMorpion::CoupsPossibles()
 void JeuMorpion::AfficherResultat() const
 {
     //modeAffichage->AfficherGrille(grille);
-    //modeAffichage->AfficherMessage("Le joueur " + joueurCourant->getInformations() + " a gagné !");
+    modeAffichage->AfficherMessage("Le joueur " + joueurCourant->getInformations() + " a gagné !");
 }
 
 bool JeuMorpion::AGagne() const

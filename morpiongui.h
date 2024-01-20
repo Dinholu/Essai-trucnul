@@ -20,7 +20,9 @@ class morpionGUI : public QWidget
 
 public:
     explicit morpionGUI(QWidget *parent = nullptr);
+ //   void mettreAJourGrille(int x, int y);
     ~morpionGUI();
+
 public slots:
     void on_retourAccueil_clicked();
     void on_JouerButton_clicked();
@@ -32,6 +34,7 @@ private:
     std::shared_ptr<AJoueur> joueur2;
     AffichageGUI* affichage;
     InputGUI* input;
+    void ReinitialiserJeu();
 
 signals:
     void showAccueil();

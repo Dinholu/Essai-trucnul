@@ -22,17 +22,20 @@ void MainWindow::initWidgets()
     morpionWidget = new morpionGUI(this);
 
     // Connecter le bouton du widget d'accueil pour afficher le morpion
+    // Connectez les signaux pour passer entre les widgets
     connect(accueilWidget, &accueil::showMorpion, this, [=]() {
         accueilWidget->hide();
         morpionWidget->show();
     });
 
     connect(morpionWidget, &morpionGUI::showAccueil, this, [=]() {
+        // Masquer le widget Morpion
         morpionWidget->hide();
         accueilWidget->show();
     });
 
-    // Afficher le widget d'accueil par défaut
+
+    // Affichez initialement le widget d'accueil
     accueilWidget->show();
     morpionWidget->hide();
 }

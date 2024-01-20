@@ -18,6 +18,7 @@ public:
 
 signals:
     void celluleChoisie(int x, int y);
+   // void coupJoue(int x, int y);
 
 public slots:
     void onCelluleClique(int x, int y);

@@ -7,6 +7,9 @@
 #include <vector>
 #include <string>
 #include <QObject>
+#include <QVector>
+#include <QPushButton>
+#include <QGridLayout>
 
 class AffichageGUI : public QObject,  public IAffichage {
     Q_OBJECT
@@ -17,12 +20,16 @@ public:
     virtual void AfficherMessage(const std::string& message, const int duree = 1) const override;
     virtual void AfficherErreur(const std::string& erreur) const override;
     virtual void AfficherCoupsPossibles(const std::vector<std::pair<int, int>>& coups) const override;
-
+    void MettreAJourGrille(const std::shared_ptr<AGrille>& grille);
 signals:
     void celluleBoutonClick(int x, int y);
 
 private:
     QWidget *parentWidget;  // Référence à votre widget parent (ex. morpionGUI)
+    QVector<QVector<QPushButton*>> boutonsGrille;
+    std::shared_ptr<AGrille> grilleJeu;
+    QGridLayout* gridLayout;
+
 public slots:
     //void celluleBoutonClick(int x, int y);
 };
