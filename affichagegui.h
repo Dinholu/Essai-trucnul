@@ -20,12 +20,12 @@ public:
     virtual void AfficherMessage(const std::string& message, const int duree = 1) const override;
     virtual void AfficherErreur(const std::string& erreur) const override;
     virtual void AfficherCoupsPossibles(const std::vector<std::pair<int, int>>& coups) const override;
-    void MettreAJourGrille(const std::shared_ptr<AGrille>& grille);
+    virtual void MettreAJourGrille(const std::shared_ptr<AGrille>& grille) override;
 signals:
     void celluleBoutonClick(int x, int y);
 
 private:
-    QWidget *parentWidget;  // Référence à votre widget parent (ex. morpionGUI)
+    QWidget *parentWidget;
     QVector<QVector<QPushButton*>> boutonsGrille;
     std::shared_ptr<AGrille> grilleJeu;
     QGridLayout* gridLayout;

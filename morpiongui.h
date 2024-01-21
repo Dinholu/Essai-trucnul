@@ -32,7 +32,7 @@ private:
     TypesJeu typeDeJeu = TypesJeu::Morpion;
     std::shared_ptr<AJoueur> joueur1;
     std::shared_ptr<AJoueur> joueur2;
-    AffichageGUI* affichage;
+    std::shared_ptr<IAffichage> affichage;
     InputGUI* input;
     void ReinitialiserJeu();
 

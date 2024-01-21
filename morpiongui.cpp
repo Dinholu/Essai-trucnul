@@ -11,11 +11,14 @@ morpionGUI::morpionGUI(QWidget *parent)
     , ui(new Ui::morpionGUI)
 {
     ui->setupUi(this);
-    affichage = new AffichageGUI(this) ;
+    affichage = std::make_shared<AffichageGUI>(this) ;
     input = new InputGUI(this);
 
     connect(ui->retourAccueil, &QPushButton::clicked, this, &morpionGUI::on_retourAccueil_clicked);
-    connect(affichage, &AffichageGUI::celluleBoutonClick, input, &InputGUI::onCelluleClique);
+    auto affichageGUI = std::dynamic_pointer_cast<AffichageGUI>(affichage);
+    if (affichageGUI) {
+        connect(affichageGUI.get(), &AffichageGUI::celluleBoutonClick, input, &InputGUI::onCelluleClique);
+    }
     connect(ui->JouerButton, &QPushButton::clicked, this, &morpionGUI::on_JouerButton_clicked);
 }
 
@@ -34,9 +37,9 @@ void morpionGUI::on_retourAccueil_clicked()
 
 void morpionGUI::ReinitialiserJeu()
 {
-    delete affichage;
+    //delete affichage;
     delete input;
-    affichage = new AffichageGUI(this) ;
+    //affichage = new AffichageGUI(this) ;
     input = new InputGUI(this);
 }
 

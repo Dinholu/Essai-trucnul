@@ -11,7 +11,7 @@
 class JeuFactory
 {
 public:
-    static std::unique_ptr<IJeu> CreerJeu(TypesJeu &typeDeJeu, std::shared_ptr<AJoueur> &joueur1, std::shared_ptr<AJoueur> &joueur2, AffichageGUI*);
+    static std::unique_ptr<IJeu> CreerJeu(TypesJeu &typeDeJeu, std::shared_ptr<AJoueur> &joueur1, std::shared_ptr<AJoueur> &joueur2, std::shared_ptr<IAffichage>);
 };
 
 #endif // JEUFACTORY_H
