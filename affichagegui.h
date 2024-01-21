@@ -20,7 +20,7 @@ public:
     virtual void AfficherMessage(const std::string& message, const int duree = 1) const override;
     virtual void AfficherErreur(const std::string& erreur) const override;
     virtual void AfficherCoupsPossibles(const std::vector<std::pair<int, int>>& coups) const override;
-    void MettreAJourGrille(const std::shared_ptr<AGrille>& grille);
+    void MettreAJourGrille(const std::shared_ptr<AGrille>& grille) override;
 signals:
     void celluleBoutonClick(int x, int y);
 

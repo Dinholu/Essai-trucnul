@@ -1,14 +1,13 @@
+// Dans le fichier morpiongui.h
+
 #ifndef MORPIONGUI_H
 #define MORPIONGUI_H
 
 #include <QWidget>
-#include "joueurhumain.h"
-#include "jeumorpion.h"
-#include "grille.h"
-#include "affichagegui.h"
+#include "AJoueur.h"
 #include "TypesJeu.h"
 #include "IAffichage.h"
-#include "inputgui.h"
+#include <memory>
 
 namespace Ui {
 class morpionGUI;
@@ -20,7 +19,6 @@ class morpionGUI : public QWidget
 
 public:
     explicit morpionGUI(QWidget *parent = nullptr);
- //   void mettreAJourGrille(int x, int y);
     ~morpionGUI();
 
 public slots:
@@ -28,12 +26,12 @@ public slots:
     void on_JouerButton_clicked();
 
 private:
-    Ui::morpionGUI *ui;
+    std::unique_ptr<Ui::morpionGUI> ui;
     TypesJeu typeDeJeu = TypesJeu::Morpion;
     std::shared_ptr<AJoueur> joueur1;
     std::shared_ptr<AJoueur> joueur2;
-    AffichageGUI* affichage;
-    InputGUI* input;
+    std::shared_ptr<IAffichage> modeAffichage;
+    std::shared_ptr<Input> input;
     void ReinitialiserJeu();
 
 signals:

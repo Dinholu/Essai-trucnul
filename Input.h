@@ -4,7 +4,6 @@
 #include <string>
 #include <utility>
 
-// creation interface input
 class Input
 {
 public:

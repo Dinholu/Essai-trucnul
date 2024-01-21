@@ -1,50 +1,39 @@
 #include "morpiongui.h"
-#include "ui_morpiongui.h"
 #include "affichagegui.h"
+#include "ui_morpiongui.h"
 #include "inputgui.h"
-#include "joueurfactory.h"
+#include "IJeu.h"
 #include "jeufactory.h"
+#include "joueurfactory.h"
 
-
-morpionGUI::morpionGUI(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::morpionGUI)
-{
+morpionGUI::morpionGUI(QWidget *parent) : QWidget(parent), ui(new Ui::morpionGUI) {
     ui->setupUi(this);
-    affichage = new AffichageGUI(this) ;
-    input = new InputGUI(this);
+
+    modeAffichage = std::make_shared<AffichageGUI>(this);
+    input = std::make_shared<InputGUI>(this);
 
     connect(ui->retourAccueil, &QPushButton::clicked, this, &morpionGUI::on_retourAccueil_clicked);
-    connect(affichage, &AffichageGUI::celluleBoutonClick, input, &InputGUI::onCelluleClique);
+    connect(modeAffichage.get(), &AffichageGUI::celluleBoutonClick, input.get(), &InputGUI::onCelluleClique);
     connect(ui->JouerButton, &QPushButton::clicked, this, &morpionGUI::on_JouerButton_clicked);
 }
 
-
-morpionGUI::~morpionGUI()
-{
-    delete ui;
+morpionGUI::~morpionGUI() {
 }
 
-void morpionGUI::on_retourAccueil_clicked()
-{
+void morpionGUI::on_retourAccueil_clicked() {
     hide();
     emit showAccueil();
-
 }
 
-void morpionGUI::ReinitialiserJeu()
-{
-    delete affichage;
-    delete input;
-    affichage = new AffichageGUI(this) ;
-    input = new InputGUI(this);
+void morpionGUI::ReinitialiserJeu() {
+    modeAffichage = std::make_shared<AffichageGUI>(this);
+    input = std::make_shared<InputGUI>(this);
 }
 
-void morpionGUI::on_JouerButton_clicked(){
-
+void morpionGUI::on_JouerButton_clicked() {
     joueur1 = JoueurFactory::CreerJoueurHumain("prenomJoueur1", Jeton::X, *input);
     joueur2 = JoueurFactory::CreerJoueurOrdinateur(Jeton::O);
 
-    std::unique_ptr<IJeu> jeu = JeuFactory::CreerJeu(typeDeJeu, joueur1, joueur2, affichage);
+    std::unique_ptr<IJeu> jeu = JeuFactory::CreerJeu(typeDeJeu, joueur1, joueur2, modeAffichage);
     jeu->Jouer();
 }

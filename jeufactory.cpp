@@ -4,10 +4,9 @@
 // #include "jeupuissance4.h"
 // #include "jeudames.h"
 #include "grillefactory.h"
-#include "affichagegui.h"
 #include <memory>
 
-std::unique_ptr<IJeu> JeuFactory::CreerJeu(TypesJeu &typeDeJeu, std::shared_ptr<AJoueur> &joueur1, std::shared_ptr<AJoueur> &joueur2, AffichageGUI* modeAffichage) {
+std::unique_ptr<IJeu> JeuFactory::CreerJeu(TypesJeu typeDeJeu, std::shared_ptr<AJoueur> joueur1, std::shared_ptr<AJoueur> joueur2, std::shared_ptr<IAffichage> modeAffichage) {
 
     std::shared_ptr<AGrille> grille = GrilleFactory::CreerGrille(typeDeJeu);
 

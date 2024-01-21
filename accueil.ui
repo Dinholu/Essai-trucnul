@@ -26,45 +26,57 @@
     <string>ACCUEIL</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QPushButton" name="morpionButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>100</y>
-     <width>82</width>
-     <height>120</height>
+     <x>151</x>
+     <y>101</y>
+     <width>80</width>
+     <height>25</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="menuLayout">
-    <item>
-     <widget class="QPushButton" name="morpionButton">
-      <property name="text">
-       <string>Morpion</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="puissance4Button">
-      <property name="text">
-       <string>Puissance4</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="othelloButton">
-      <property name="text">
-       <string>Othello</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="damesButton">
-      <property name="text">
-       <string>Dames</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <property name="text">
+    <string>Morpion</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="damesButton">
+   <property name="geometry">
+    <rect>
+     <x>151</x>
+     <y>194</y>
+     <width>80</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Dames</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="puissance4Button">
+   <property name="geometry">
+    <rect>
+     <x>151</x>
+     <y>132</y>
+     <width>80</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Puissance4</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="othelloButton">
+   <property name="geometry">
+    <rect>
+     <x>151</x>
+     <y>163</y>
+     <width>80</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Othello</string>
+   </property>
   </widget>
  </widget>
  <resources/>

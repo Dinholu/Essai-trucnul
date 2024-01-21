@@ -6,13 +6,12 @@
 #include "AGrille.h"
 #include "AJoueur.h"
 #include "IAffichage.h"
-#include "affichagegui.h"
 
 
 class JeuMorpion : public IJeu {
 
 public:
-    JeuMorpion(std::shared_ptr<AGrille> grille, std::shared_ptr<AJoueur> j1, std::shared_ptr<AJoueur> j2, AffichageGUI* modeAffichage);
+    JeuMorpion(std::shared_ptr<AGrille> grille, std::shared_ptr<AJoueur> j1, std::shared_ptr<AJoueur> j2, std::shared_ptr<IAffichage> modeAffichage);
     void Tour() override;
     bool AGagne() const override;
     bool PartieFinie() const override;
@@ -25,7 +24,7 @@ private:
     std::shared_ptr<AJoueur> joueur1;
     std::shared_ptr<AJoueur> joueur2;
     std::shared_ptr<AJoueur> joueurCourant;
-    AffichageGUI* modeAffichage;
+    std::shared_ptr<IAffichage> modeAffichage;
     const int sequenceGagnante = 3;
 };
 
